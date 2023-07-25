@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Weather App - Result</title>
+    <style>
+        html body {
+    
+    background-image: url("../static/images/weather.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+       }
+        .my-div {
+            
+            background-color: rgb(151, 174, 237); /* Replace with your desired color code */
+            padding: 20px 20px 20px 20px;
+            /*size of the div*/
+            border: 1px solid black;
+            border-radius: 30px 30px 30px 30px;
+            width: 30%; /* Fixed width */
+            height:50%; /* Fixed height */
+             /* Horizontally center the content */
+            align-items: center; /* Vertically center the content */
+            margin: 15% 35% 35% 35%;
+            color: rgb(13, 13, 13);
+            align-items: flex-end;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: bold;
+           
+            
+            box-shadow: 5px 5px 5px rgb(0, 0, 0);
+            opacity: 0.9;
+        }
+        .button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid blue;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  color: blue;
+  font-size: 18px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+    align-items: flex-end;
+    display: flex; /* Use flexbox for the container */
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.button:hover {
+  background-color: blue;
+  color: white;
+  
+}
+    </style>
+</head>
+<body>
+    <div class="my-div">
+    <h1 align="center">Weather Result</h1>
+    <h2>{{ weather_data['name'] }}, {{ weather_data['sys']['country'] }}</h2>
+    <p>Weather: {{ weather_data['weather'][0]['main'] }} ({{ weather_data['weather'][0]['description'] }})</p>
+    <p>Temperature: {{ weather_data['main']['temp'] }} °C</p>
+    <p>Humidity: {{ weather_data['main']['humidity'] }}%</p>
+    <p>Wind Speed: {{ weather_data['wind']['speed'] }} m/s</p>
+    <a href="/" class="button">Go Back</a>
+    </div>
+</body>
+</html>

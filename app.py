@@ -1,33 +1,29 @@
+
+from flask import Flask, render_template, request
 import requests
-import argparse
 
-def get_weather(city):
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={'368593cfa794957aa4559f5e77197fe7'}&units=metric"
+app = Flask(__name__)
+
+# OpenWeatherMap API configuration
+API_KEY = '368593cfa794957aa4559f5e77197fe7'
+BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/weather', methods=['POST'])
+def get_weather():
+    city = request.form['city']
+    url = f"{BASE_URL}?q={city}&appid={API_KEY}&units=metric"
+
     response = requests.get(url)
-    
+
     if response.status_code == 200:
-        data = response.json()
-        print_weather_data(data)
+        weather_data = response.json()
+        return render_template('weather_result.html', weather_data=weather_data)
     else:
-        print("Error with code:", response.status_code)
+        return render_template('home.html', error='City not found.')
 
-def print_weather_data(data):
-    print("weather:",data['weather'][0]['description'])
-    print("temperature:",data['main']['temp'])
-    print("pressure:",data['main']['pressure'])
-    print("humidity:",data['main']['humidity'])
-    print("Wind Speed",data['wind']['speed'])
-    print("Minimum Temperature",data['main']['temp_min'])
-    print("Maximum Temperature",data['main']['temp_max'])
-    print("rainfall",data['rain']['1h'])
-
-   
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument("city", help="Enter a city name")
-args = parser.parse_args()    
-city = args.city
-get_weather(city)
-
-
+if __name__ == '__main__':
+    app.run(debug=True)

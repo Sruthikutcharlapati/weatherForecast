@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App - Enter City</title>
+    <style>
+        html body {
+            background-image: url("../static/images/home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;}
+        
+       
+            .button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid blue;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  color: blue;
+  font-size: 18px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+    align-items: flex-end;
+  /* Use flexbox for the container */
+  justify-content: center;
+  align-items: flex-end;
+  display: block; /* Display the button as a block element */
+  margin-bottom: 4opx  50px 50px 50px;
+}
+
+.button:hover {
+  background-color: blue;
+  color: white;
+  
+}
+h1{
+    text-align: center;
+    font-family: 'Bahnschrift Condensed', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(13, 13, 13);
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+        .data {
+            background-color: rgb(194, 202, 225); /* Replace with your desired color code */
+            padding: 40px 10px 40px 40px;
+            /*size of the div*/ 
+            border: 1px solid black;
+            border-radius: 20px ;
+            width: 30%; /* Fixed width */
+            height:50%; /* Fixed height */
+             /* Horizontally center the content */
+            align-items: center; /* Vertically center the content */
+            margin: 2% 5% 15% 30%;
+            color: rgb(13, 13, 13);
+            align-items: flex-end;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: bold;
+            display: inline-block; /* Display the input fields as a block container */
+            text-align: left; 
+            
+            box-shadow: 5px 5px 5px rgb(0, 0, 0);
+            opacity: 0.9;
+            
+
+        }
+        </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <div class="data">
+    <form method="POST" action="/weather">
+        <label for="city">Enter city name:</label>
+        <input type="text" id="city" name="city" required>
+        <br>
+        <br>
+      <button type="submit" class="button">Get Weather</button>
+    </form>
+    </div>
+</body>
+</html>
